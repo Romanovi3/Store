@@ -11,9 +11,17 @@ const Cart = ({ cartIsOpen,setCartIsOpen }) => {
 
     }
     return (
-        <div className='fixed top-20 right-30 bg-blue-400/90 h-96 w-150 rounded-md'>
-            <div className="cart">
-                <h3>Корзина</h3>
+        <div className='fixed top-20 right-30 bg-emerald-700/90 h-96 w-150 rounded-md text-white'>
+            <div className="cart px-7 text-lg">
+                <h3 className='text-center text-2xl mt-5'>Корзина</h3>
+                <ul>
+                    <li className='flex '>
+                        <p>Lorem ipsum dolor sit amet.</p>
+                        <p>Кол-во: </p>
+                        <p>+</p>
+                        <p>-</p>
+                    </li>
+                </ul>
             </div>
 
         </div>

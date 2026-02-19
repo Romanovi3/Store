@@ -12,7 +12,7 @@ const ProductItem = (props) => {
             <img src={zaglushka} alt={title} className='h-60 w-96 object-cover'/>
             <p className='flex-1 px-2 italic font-bold'>{title}</p>
             <p className='flex item-center gap-5 flex-row px-2 mt-2'>
-                <span>{price}$</span>
+                <span>{price} $</span>
                 <span className='italic'>{category}</span>
             </p>
             <div className="buttons">
