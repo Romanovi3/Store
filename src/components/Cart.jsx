@@ -1,27 +1,36 @@
 import React from 'react';
-import cartIcon from '../assets/cart.png'
+import {useContext} from 'react';
+import CartItem from '../components/CartItem.jsx'
+import {CustomContext} from '../Content/Context.jsx';
+
+
 
 const Cart = ({ cartIsOpen,setCartIsOpen }) => {
 
+    const {cart} = useContext(CustomContext);
 
     const closeCart = (e) =>{
         if (e.key === 'Escape'){
             setCartIsOpen(false)
         }
-
     }
+
+    window.addEventListener('keydown', closeCart);
     return (
         <div className='fixed top-20 right-30 bg-emerald-700/90 h-96 w-150 rounded-md text-white'>
             <div className="cart px-7 text-lg">
-                <h3 className='text-center text-2xl mt-5'>Корзина</h3>
-                <ul>
-                    <li className='flex '>
-                        <p>Lorem ipsum dolor sit amet.</p>
-                        <p>Кол-во: </p>
-                        <p>+</p>
-                        <p>-</p>
-                    </li>
+                <h3 className='text-center text-2xl mt-5 mb-5'>Корзина</h3>
+                <ul className='overflow-y-auto h-55 '>
+                    {cart.map(item => (
+                         <CartItem
+                             key={item.id}
+                             title={item.title}
+                             price={item.price}
+                             id = {item.id}
+                         />
+                    ))}
                 </ul>
+                <h3 className='text-center text-xl mt-5 mb-0'>Итого: 5000$ </h3>
             </div>
 
         </div>

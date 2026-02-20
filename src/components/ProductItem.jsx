@@ -1,9 +1,13 @@
 import React from 'react';
 import zaglushka from '../assets/zaglushka.png'
+import {useContext} from "react";
+import {CustomContext} from "../Content/Context.jsx";
 
 const ProductItem = (props) => {
 
-    const {title, description, price, image, category, setCart} = props;
+    const {title, description, price, image, category, setCart, id} = props;
+
+    const {addToCart} = useContext(CustomContext)
 
 
 
@@ -16,7 +20,7 @@ const ProductItem = (props) => {
                 <span className='italic'>{category}</span>
             </p>
             <div className="buttons">
-                <button>Add to cart</button>
+                <button onClick={()=>addToCart(id)}>Add to cart</button>
                 <button>More info</button>
             </div>
 
