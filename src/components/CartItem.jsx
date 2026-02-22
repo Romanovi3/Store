@@ -1,19 +1,11 @@
-import React, {use, useEffect} from 'react';
+import  {useEffect} from 'react';
 import {useContext} from "react";
 import {CustomContext} from "../Content/Context.jsx";
 
-const CartItem = ({title,price,id}) => {
+const CartItem = ({title,price,id,quantity}) => {
 
-    const {deleteFromCart} = useContext(CustomContext)
-    const [quantity, setQuantity] = React.useState(1);
+    const {deleteFromCart, increaseQuantity, decreaseQuantity} = useContext(CustomContext)
 
-    const increaseQuantity = () => {
-        setQuantity(prevState => prevState + 1);
-    }
-
-    const decreaseQuantity = () => {
-        setQuantity(prevState => prevState - 1);
-    }
 
     useEffect(() => {
       if ( quantity <= 0){
@@ -24,12 +16,12 @@ const CartItem = ({title,price,id}) => {
 
     return (
         <li className='flex gap-2 justify-between'>
-            <p onClick={()=>deleteFromCart(id)}>x</p>
+            <p onClick={()=>deleteFromCart(id)} className='cursor-pointer'>x</p>
             <p className='flex-1'>{title}</p>
             <p>{price} $</p>
             <p>Кол-во: {quantity}</p>
-            <p onClick={increaseQuantity}>+</p>
-            <p onClick={decreaseQuantity}>-</p>
+            <p onClick={increaseQuantity} className='cursor-pointer'>+</p>
+            <p onClick={decreaseQuantity} className='cursor-pointer'>-</p>
         </li>
     );
 };

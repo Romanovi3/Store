@@ -8,6 +8,7 @@ export const Context = ({children}) => {
 
     const [product, setProduct] = useState([]);
     const [cart, setCart] = useState([]);
+    const [quantity, setQuantity] = useState(1);
 
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
@@ -17,18 +18,21 @@ export const Context = ({children}) => {
     }, [])
 
 
+    const increaseQuantity = () => {
+        setQuantity(prevState => prevState + 1);
+    }
+
+    const decreaseQuantity = () => {
+        setQuantity(prevState => prevState - 1);
+    }
+
 
     const addToCart = (id) => {
         const item = product.find(product => product.id === id);
 
-        if ( cart.length === 0){
-            setCart([...cart,item])
+         if (!cart.some(item => item.id === id)){
+            setCart([...cart, {...item, quantity: 1}]);
         }
-        else if (!cart.some(item => item.id === id)){
-            setCart([...cart, item]);
-        }
-
-        console.log(cart)
     }
 
     const deleteFromCart = (id) => {
@@ -42,6 +46,10 @@ export const Context = ({children}) => {
         setCart,
         addToCart,
         deleteFromCart,
+        quantity,
+        setQuantity,
+        increaseQuantity,
+        decreaseQuantity,
     }
     return (
         <CustomContext.Provider value={value}>{children}</CustomContext.Provider>
