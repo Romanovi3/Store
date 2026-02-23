@@ -6,7 +6,7 @@ import {CustomContext} from '../Content/Context.jsx';
 
 const Cart = ({cartIsOpen, setCartIsOpen}) => {
 
-    const {cart} = useContext(CustomContext);
+    const {cart, cartSum} = useContext(CustomContext);
 
     const closeCart = (e) => {
         if (e.key === 'Escape') {
@@ -29,7 +29,7 @@ const Cart = ({cartIsOpen, setCartIsOpen}) => {
 
                             ))}
                     </ul> : <h2 className='text-4xl text-center mt-5'>Здесь пока пусто...</h2>}
-                {cart.length ? <h3 className='text-center text-xl mt-5 mb-0'>Итого: 5000$ </h3> : null}
+                {cart.length ? <h3 className='text-center text-xl mt-5 mb-0'>Итого: {cartSum} $ </h3> : null}
 
             </div>
 
