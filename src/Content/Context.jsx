@@ -11,6 +11,7 @@ export const Context = ({children}) => {
     const [cartSum, setCartSum] = useState(null);
 
 
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
@@ -40,6 +41,9 @@ export const Context = ({children}) => {
     }, [cart])
 
 
+
+
+
     const value = {
         product,
         setProduct,
@@ -47,7 +51,7 @@ export const Context = ({children}) => {
         setCart,
         addToCart,
         deleteFromCart,
-        cartSum,
+        cartSum
     }
     return (
         <CustomContext.Provider value={value}>{children}</CustomContext.Provider>
