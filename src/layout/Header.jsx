@@ -1,6 +1,6 @@
 import React from 'react';
 import Cart from '../components/Cart.jsx'
-import cartIcon from '../assets/cart.png'
+import cartIcon from '/src/assets/cart.png'
 import {useState} from 'react'
 
 const Header = () => {

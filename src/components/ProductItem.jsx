@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import zaglushka from '../assets/zaglushka.png'
+import zaglushka from '/src/assets/zaglushka.png'
 import Modal from './Modal.jsx'
 import {useContext} from "react";
 import {CustomContext} from "../Content/Context.jsx";
