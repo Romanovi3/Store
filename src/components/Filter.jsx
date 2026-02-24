@@ -1,7 +1,7 @@
 import React, {useEffect, useContext} from 'react';
 import {CustomContext} from "../Content/Context.jsx";
 
-const Filter = ({product, setProduct}) => {
+const Filter = () => {
 
     const {filterProduct} = useContext(CustomContext);
     const [currentFilter, setCurrentFilter] = React.useState({

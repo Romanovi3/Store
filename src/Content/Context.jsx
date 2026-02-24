@@ -1,6 +1,5 @@
 import {createContext, useState, useEffect} from "react";
 import React from 'react'
-import products from "../components/Products.jsx";
 
 export const CustomContext = createContext({});
 
@@ -20,14 +19,14 @@ export const Context = ({children}) => {
                 setFilteredProducts(data)
             })
             .catch(err => console.log(err))
-    }, [product])
+    }, [])
 
 
     const addToCart = (id) => {
         const item = product.find(product => product.id === id);
 
         if (!cart.some(item => item.id === id)) {
-            setCart([...cart, {...item, quantity: 1}]);
+            setCart([...cart, item]);
         }
     }
 
@@ -36,7 +35,7 @@ export const Context = ({children}) => {
     }
 
     const calculateTotal = (cart) => {
-        return Math.round(cart.reduce((sum, item) => sum + item.price * item.quantity, 0));
+        return Math.round(cart.reduce((sum, item) => sum + item.price, 0));
     }
 
     const filterProduct = (e) => {
@@ -50,6 +49,7 @@ export const Context = ({children}) => {
         }
 
     }
+
     useEffect(() => {
         setCartSum(calculateTotal(cart))
     }, [cart])

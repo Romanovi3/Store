@@ -12,7 +12,7 @@ const Modal = ({description, image, price, category, title, setModalIsOpen, id, 
     useEffect(() => {
 
             const clickOutside = (e) => {
-                if (ModalRef.current && ModalRef.current.contains(e.target)) {
+                if (ModalRef.current && !ModalRef.current.contains(e.target)) {
                     setModalIsOpen(false);
                 }
             }
@@ -24,12 +24,12 @@ const Modal = ({description, image, price, category, title, setModalIsOpen, id, 
             }
 
             if (modalIsOpen) {
-                window.addEventListener('click', clickOutside);
+                window.addEventListener('mousedown', clickOutside);
                 document.addEventListener('keydown', handleEscape);
             }
 
             return () => {
-                window.removeEventListener('click', clickOutside);
+                window.removeEventListener('mousedown', clickOutside);
                 document.removeEventListener('keydown', handleEscape);
             }
         }, [modalIsOpen, setModalIsOpen]
