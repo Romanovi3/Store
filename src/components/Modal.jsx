@@ -24,12 +24,12 @@ const Modal = ({description, image, price, category, title, setModalIsOpen, id, 
             }
 
             if (modalIsOpen) {
-                window.addEventListener('mousedown', clickOutside);
+                document.addEventListener('mousedown', clickOutside);
                 document.addEventListener('keydown', handleEscape);
             }
 
             return () => {
-                window.removeEventListener('mousedown', clickOutside);
+                document.removeEventListener('mousedown', clickOutside);
                 document.removeEventListener('keydown', handleEscape);
             }
         }, [modalIsOpen, setModalIsOpen]
