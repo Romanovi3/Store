@@ -12,31 +12,36 @@ const ProductItem = (props) => {
     const [modalIsOpen, setModalIsOpen] = useState(false);
 
 
-
     return (
         <div>
-            <div className='item-card flex flex-col'>
+            <div className='item-card flex flex-col min-h-[2vh]'>
                 <img src={zaglushka} alt={title} className='h-60 w-96 object-cover'/>
-                <p className='flex-1 px-2 italic font-bold'>{title}</p>
-                <p className='flex item-center gap-5 flex-row px-2 mt-2'>
-                    <span className='text-teal-400'>{price} $</span>
+                <p className='px-2 italic font-bold text-center h-18 overflow-y-hidden'>{title}</p>
+                <p className='flex item-center gap-5 flex-row px-2 justify-center mt-auto'>
+                    <span className='text-emerald-600'>{price} $</span>
                     <span className='italic text-slate-400'>{category}</span>
                 </p>
-                <div className="buttons">
-                    <button onClick={() => addToCart(id)}>Add to cart</button>
-                    <button onClick={() => setModalIsOpen(modal => !modal)}>More info</button>
+                <div className="buttons flex gap-5 justify-center px-2 mt-2 mb-2">
+                    <button onClick={() => addToCart(id)}
+                            className='cursor-pointer ring ring-emerald-600 rounded p-2 transition duration-200 ease-in-out hover:bg-emerald-600 hover:text-white basis-sm m-auto'>Add
+                        to cart
+                    </button>
+                    <button onClick={() => setModalIsOpen(modal => !modal)}
+                            className='cursor-pointer ring ring-emerald-600 rounded p-2 transition duration-200 ease-in-out hover:bg-emerald-600 hover:text-white basis-sm m-auto'>More
+                        info
+                    </button>
                 </div>
             </div>
-                { modalIsOpen && (<Modal
-                    setModalIsOpen={setModalIsOpen}
-                    description={description}
-                    image={image}
-                    category={category}
-                    title={title}
-                    price={price}
-                    id={id}
-                    modalIsOpen={modalIsOpen}
-                />)}
+            {modalIsOpen && (<Modal
+                setModalIsOpen={setModalIsOpen}
+                description={description}
+                image={image}
+                category={category}
+                title={title}
+                price={price}
+                id={id}
+                modalIsOpen={modalIsOpen}
+            />)}
         </div>
     );
 };
